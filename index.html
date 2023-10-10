@@ -1,22 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bootcamp Quiz App</title>
     <link rel="stylesheet" href="/assets/style.css">
 </head>
-<body>
-<div class="wrapper">
-    <div class="container">
-        <div class="quiz-contents">
-            <h1>Quiz App</h1>
-            <button id="start">Start Quiz</button>
-        </div>
-    </div>
-</div>
 
-    
-    <script src="/assets/script.js"></script>
+<body>
+        <header><h1>Quiz App</h1></header>
+        <!--Rules Container-->
+        <div class="rules-container">
+            <div class="rules_list">
+                <div class="rules">1. When you click the start button the timer and questions begin.</div>
+                <div class="rules">2. Clicked answers are final. <span>Choose carefully!</span></div>
+                <div class="rules">3. Questions will continue during the allotted time.</div>
+                <div class="rules">4. Incorrect answers result in time being deducted.</div>
+                <div class="rules">5. Correct answers will accrue points.</div>
+                <div class="rules">6. The game is over when all the questions are answered or time has elapsed.</div>
+                <div class="rules">7. You can save your initials and score.</div>
+            </div>
+        </div>
+
+        <!--Start Button-->
+        <div class="buttonDiv"><button class="startBtn">Start Quiz</button></div>
+
+        <div class="time-container">
+            <div class="timer">Time Left:</div>
+            <div class="time">60<span>sec</span></div>
+        </div>
+
+        
+        <script src="/assets/script.js"></script>
 </body>
+
 </html>
