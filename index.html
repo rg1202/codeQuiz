@@ -9,30 +9,49 @@
 </head>
 
 <body>
-        <header><h1>Quiz App</h1></header>
-        <!--Rules Container-->
-        <div class="rules-container">
-            <div class="rules_list">
-                <div class="rules">1. When you click the start button the timer and questions begin.</div>
-                <div class="rules">2. Clicked answers are final. <span>Choose carefully!</span></div>
-                <div class="rules">3. Questions will continue during the allotted time.</div>
-                <div class="rules">4. Incorrect answers result in time being deducted.</div>
-                <div class="rules">5. Correct answers will accrue points.</div>
-                <div class="rules">6. The game is over when all the questions are answered or time has elapsed.</div>
-                <div class="rules">7. You can save your initials and score.</div>
+    <header>
+        <h1>Quiz App</h1>
+    </header>
+    <!--Rules Container-->
+    <div class="rules-container">
+        <div class="rules_list">
+            <div class="rules">1. When you click the start button the timer and questions begin.</div>
+            <div class="rules">2. Clicked answers are final. <span>Choose carefully!</span></div>
+            <div class="rules">3. Questions will continue during the allotted time.</div>
+            <div class="rules">4. Incorrect answers result in time being deducted.</div>
+            <div class="rules">5. Correct answers will accrue points.</div>
+            <div class="rules">6. The game is over when all the questions are answered or time has elapsed.</div>
+            <div class="rules">7. You can save your initials and score.</div>
+        </div>
+    </div>
+
+    <!--Start Button-->
+
+    <div class="buttonDiv"><button class="startBtn">Start Quiz</button></div>
+    <div class="quizArea">
+        <div class="initials-input">
+            <label for="initials">Enter Your Initials:</label>
+            <input type="text" id="initials" maxlength="2">
+        </div>
+        <div class="time-container">
+            <div class="timer">Time Left:(seconds)</div>
+            <div class="time">180<span>sec</span></div>
+            <div class="questions">
+                <div class="question">
+                    <h2>Question 1</h2>
+                    <ul class="choices">
+                        <li><label><input type="radio" name="q1" value="A"> Choice A</label></li>
+                        <li><label><input type="radio" name="q1" value="B"> Choice B</label></li>
+                        <li><label><input type="radio" name="q1" value="C"> Choice C</label></li>
+                        <li><label><input type="radio" name="q1" value="D"> Choice D</label></li>
+                    </ul>
+                </div>
+                <div class="correct-count">Correct: 0</div> 
+                
             </div>
         </div>
-
-        <!--Start Button-->
-        <div class="buttonDiv"><button class="startBtn">Start Quiz</button></div>
-
-        <div class="time-container">
-            <div class="timer">Time Left:</div>
-            <div class="time">60<span>sec</span></div>
-        </div>
-
-        
-        <script src="/assets/script.js"></script>
+    </div>
+    <script src="/assets/script.js"></script>
 </body>
 
 </html>
