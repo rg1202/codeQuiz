@@ -1,3 +1,4 @@
+//wait until the HTML document is fully ready before executing javascript
 document.addEventListener('DOMContentLoaded', function () {
     var questions = [
         {
@@ -177,8 +178,6 @@ document.addEventListener('DOMContentLoaded', function () {
         var resultContainer = document.querySelector('.result');
         resultContainer.style.display = 'block';
         resultContainer.textContent = `You answered ${correctAnswers} questions correctly.`;
-
-        // You can also display the final score, save it, or perform other actions here
 
         // Stop the timer (if it's still running)
         clearInterval(countdownInterval);
