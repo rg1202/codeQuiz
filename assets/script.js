@@ -275,6 +275,62 @@ document.addEventListener("DOMContentLoaded", function () {
 	// Add an event listener to the "Start Quiz" button
 	document.querySelector(".startBtn").addEventListener("click", startQuiz);
 
+	function saveScore() {
+		const initials = document.getElementById("initials").value;
+		const score = correctAnswers; // Get the correct answers count
+
+		if (initials && score > 0) {
+			// Check if the user entered initials and scored some points
+			// Create an array to store scores and initials, or retrieve the existing array
+			const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+
+			// Add the current score and initials to the array
+			highScores.push({ initials, score });
+
+			// Sort the array by score in descending order
+			highScores.sort((a, b) => b.score - a.score);
+
+			// Keep only the top scores (you can choose the number)
+			const topScores = highScores.slice(0, 5); // Keep the top 5 scores
+
+			// Store the updated top scores array in localStorage
+			localStorage.setItem("highScores", JSON.stringify(topScores));
+
+			// Optionally, you can display a message to the user indicating that the score is saved
+			alert("Score saved!");
+
+			// You may also want to redirect the user to a high scores page or something similar
+			// For this, you'd use window.location.href = "highscores.html";
+		} else {
+			alert("Please enter initials and score some points before saving.");
+		}
+	}
+
+  function displayScores() {
+    const scoreList = document.getElementById("scoreList");
+    scoreList.innerHTML = ""; // Clear any existing list items
+
+    const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+
+    if (highScores.length === 0) {
+        // If there are no past scores, display a message
+        scoreList.innerHTML = "<li>No past scores available.</li>";
+    } else {
+        // If there are past scores, create list items for each score and display them
+        highScores.forEach((entry, index) => {
+            const listItem = document.createElement("li");
+            listItem.textContent = `${entry.initials}: ${entry.score}`;
+            scoreList.appendChild(listItem);
+        });
+    }
+}
+
+// Call the function to display scores when the page loads
+displayScores();
+
+	// Add an event listener to the "Save Score" button
+	document.getElementById("saveScore").addEventListener("click", saveScore);
+
 	$(document).ready(function () {
 		$("#rulesModal").modal("show");
 	});
