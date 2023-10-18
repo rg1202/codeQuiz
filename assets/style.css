@@ -6,46 +6,54 @@
     font-family: 'DM Serif Display', serif;
     font-family: 'Oswald', sans-serif;
     font-family: 'Young Serif', serif;  
-    
 }
 
 body {
+    display: inline;
     color: #8e8e8e;
     background: #2E2E2E;
+    margin: 20px;
+}
+
+.rules-container {
+    text-align: center;
 }
 
 h1 {
     text-align: center;
 }
 
+
+.buttonDiv {
+    text-align: center;
+    margin-top: 20px;
+}
+
 .startBtn {
-    font-size: 25px;
-    font-weight: 500;
-    padding: 15px;
-    border: 5px #4E4E4E;
-    border-radius: 5px;
-    background: #fff;
+    background-color: #007BFF; /* Change the background color */
+    color: #e80000; /* Change the text color */
+    padding: 10px 20px;
+    font-size: 18px;
+    border: solid white;
     cursor: pointer;
-}
-
-.rules_list{
-    background: #fff;
-    color:#2E2E2E;
     border-radius: 5px;
-    text-align: left;
-    padding: 10px;
-    line-height: 2;
+    transition: background-color 0.3s ease-in-out;
 }
 
-.rules_list span {
-    color: red;
-    font-weight: 800;
-    text-decoration: underline;
+.startBtn:hover {
+    background-color: #0056b3; /* Change the background color on hover */
 }
 
-.startBtn:hover{
-    color: white;
-    background: #4E4E4E;
-    border: solid 1px #fff;
+.high-scores {
+    text-align: center;
 }
 
+.questions {
+    margin-left: 40px;
+    text-decoration: none;
+    list-style: none;
+}
+
+.choices {
+    list-style: none;
+}

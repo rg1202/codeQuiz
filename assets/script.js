@@ -75,8 +75,8 @@ document.addEventListener("DOMContentLoaded", function () {
 		{
 			question:
 				"Question 11: Which of the following is a valid HTML5 semantic element?",
-			choices: ["<div>", "<article>", "<container>", "<block>"],
-			correctAnswer: "<article>",
+			choices: ["div", "article", "container", "block"],
+			correctAnswer: "article",
 		},
 		{
 			question:
@@ -101,26 +101,16 @@ document.addEventListener("DOMContentLoaded", function () {
 			choices: ["block", "inline", "fixed", "table-cell"],
 			correctAnswer: "fixed",
 		},
+		
 		{
 			question:
-				"Question 15: How do you link an external JavaScript file to an HTML document?",
-			choices: [
-				"<script src='script.js'></script>",
-				"<js>script.js</js>",
-				"<javascript>script.js</javascript>",
-				"<link href='script.js' rel='script'>",
-			],
-			correctAnswer: "<script src='script.js'></script>",
-		},
-		{
-			question:
-				"Question 16: Which operator is used to compare two values for equality in JavaScript?",
+				"Question 15: Which operator is used to compare two values for equality in JavaScript?",
 			choices: ["==", "===", "!=", "!=="],
 			correctAnswer: "===",
 		},
 		{
 			question:
-				"Question 17: What does the 'display: flex' property value do in CSS?",
+				"Question 16: What does the 'display: flex' property value do in CSS?",
 			choices: [
 				"Creates a flexbox container",
 				"Hides the element",
@@ -130,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			correctAnswer: "Creates a flexbox container",
 		},
 		{
-			question: "Question 18: What is the purpose of the HTML <meta> tag?",
+			question: "Question 17: What is the purpose of the HTML <meta> tag?",
 			choices: [
 				"Define metadata about the document",
 				"Create a hyperlink",
@@ -141,13 +131,13 @@ document.addEventListener("DOMContentLoaded", function () {
 		},
 		{
 			question:
-				"Question 19: Which function is used to schedule a function to run at a later time in JavaScript?",
+				"Question 18: Which function is used to schedule a function to run at a later time in JavaScript?",
 			choices: ["setTimeout", "setInterval", "setDelay", "wait"],
 			correctAnswer: "setTimeout",
 		},
 		{
 			question:
-				"Question 20: What is the purpose of the CSS 'z-index' property?",
+				"Question 19: What is the purpose of the CSS 'z-index' property?",
 			choices: [
 				"Specifies the font size",
 				"Controls the stacking order of elements",
@@ -161,6 +151,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	var currentQuestionIndex = 0;
 	var correctAnswers = 0; // Initialize the correct answers count
 	var timeLeft = 180; // Set the initial time (in seconds)
+  var quizInProgress= false;
 
 	function displayQuestion() {
 		var questionContainer = document.querySelector(".question");
@@ -197,41 +188,42 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	function checkAnswer() {
-		var selectedAnswer = document.querySelector(
-			`input[name="q${currentQuestionIndex + 1}"]:checked`
-		);
-		if (selectedAnswer) {
-			var userAnswer = selectedAnswer.value;
-			var correctAnswer = questions[currentQuestionIndex].correctAnswer;
-
-			if (userAnswer === correctAnswer) {
-				// User's answer is correct
-				// Increase the correct answers count
-				correctAnswers++;
-				timeLeft += 3;
-
-				// Update the correct answer count display
-				document.querySelector(
-					".correct-count"
-				).textContent = `Correct: ${correctAnswers}`;
-			} else {
-				// User's answer is incorrect
-				// Deduct 3 seconds from the total time
-				timeLeft -= 3;
-			}
-
-			// Move to the next question
-			currentQuestionIndex++;
-
-			// Check if there are more questions
-			if (currentQuestionIndex < questions.length) {
-				displayQuestion(); // Display the next question
-			} else {
-				// No more questions, quiz is finished
-				displayResult(); // Display the quiz result
-			}
-		}
-	}
+    var selectedAnswer = document.querySelector(
+      `input[name="q${currentQuestionIndex + 1}"]:checked`
+    );
+    if (selectedAnswer) {
+      var userAnswer = selectedAnswer.value;
+      var correctAnswer = questions[currentQuestionIndex].correctAnswer;
+  
+      if (userAnswer === correctAnswer) {
+        // User's answer is correct
+        // Increase the correct answers count
+        correctAnswers++;
+        timeLeft += 3;
+  
+        // Update the correct answer count display
+        document.querySelector(
+          ".correct-count"
+        ).textContent = `Correct: ${correctAnswers}`;
+      } else {
+        // User's answer is incorrect
+        // Deduct 3 seconds from the total time
+        timeLeft -= 3;
+      }
+  
+      // Move to the next question
+      currentQuestionIndex++;
+  
+      // Check if there are more questions
+      if (currentQuestionIndex < questions.length) {
+        displayQuestion(); // Display the next question
+      } else {
+        // No more questions, quiz is finished
+        quizInProgress = false; // Set quizInProgress to false
+        displayResult(); // Display the quiz result
+      }
+    }
+  }
 
 	function displayResult() {
 		// Hide the question container
@@ -247,6 +239,8 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	function startQuiz() {
+    if (!quizInProgress) {
+      quizInProgress=true;
 		// Hide the "Start Quiz" button
 		document.querySelector(".startBtn").style.display = "none";
 
@@ -265,12 +259,13 @@ document.addEventListener("DOMContentLoaded", function () {
 			timeElement.textContent = timeLeft;
 
 			// Check if the timer has reached 0
-			if (timeLeft === 0) {
-				clearInterval(countdownInterval);
-				displayResult(); // Display the result when time is up
-			}
-		}, 1000); // Update the timer every 1000 milliseconds (1 second)
-	}
+			if (timeLeft === 0 || currentQuestionIndex >= questions.length) {
+        clearInterval(countdownInterval);
+        displayResult(); // Display the result when time is up or no questions are left
+      }
+    }, 1000); // Update the timer every 1000 milliseconds (1 second)
+  }
+}
 
 	// Add an event listener to the "Start Quiz" button
 	document.querySelector(".startBtn").addEventListener("click", startQuiz);
@@ -302,7 +297,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			// You may also want to redirect the user to a high scores page or something similar
 			// For this, you'd use window.location.href = "highscores.html";
 		} else {
-			alert("Please enter initials and score some points before saving.");
+			alert("Please enter initials and finish quiz before saving.");
 		}
 	}
 
