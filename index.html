@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bootcamp Quiz App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="assets/style.css">
 </head>
 
@@ -14,16 +18,40 @@
     </header>
     <!--Rules Container-->
     <div class="rules-container">
-        <div class="rules_list">
-            <div class="rules">1. When you click the start button the timer starts and questions will appear.</div>
-            <div class="rules">2. Clicked answers are final. <span>Choose carefully!</span></div>
-            <div class="rules">3. Questions will continue during the allotted time.</div>
-            <div class="rules">4. Incorrect answers result in time being deducted.</div>
-            <div class="rules">5. Correct answers will accrue points and will add time.</div>
-            <div class="rules">6. The game is over when all the questions are answered or the time has elapsed.</div>
-            <div class="rules">7. You can save your initials and score.</div>
+        <!-- Button to trigger the modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rulesModal">
+            Open Rules
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="rulesModal" tabindex="-1" role="dialog" aria-labelledby="rulesModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="rulesModalLabel">Quiz Rules</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Rules content here -->
+                        <div class="rules_list">
+                            <div class="rules">1. When you click the start button the timer starts and questions will appear.</div>
+                            <div class="rules">2. Clicked answers are final. <span>Choose carefully!</span></div>
+                            <div class="rules">3. Questions will continue during the allotted time.</div>
+                            <div class="rules">4. Incorrect answers result in time being deducted.</div>
+                            <div class="rules">5. Correct answers will accrue points and will add time.</div>
+                            <div class="rules">6. The game is over when all the questions are answered or the time has elapsed.</div>
+                            <div class="rules">7. You can save your initials and score.</div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
 
     <!--Start Button-->
 

@@ -211,4 +211,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Add an event listener to the "Start Quiz" button
     document.querySelector('.startBtn').addEventListener('click', startQuiz);
+
+    $(document).ready(function () {
+      $('#rulesModal').modal('show');
+  });
 });
